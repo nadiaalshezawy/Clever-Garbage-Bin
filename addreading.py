@@ -33,13 +33,13 @@ session.add(User2)
 session.commit()
 
 # Create reading for readingweight
-measurement1 = Measurement(id=1, wasteweight=2.4, recycleweight=1.3,barcode="45678")
+measurement1 = Measurement(id=1, barcode="45678", wasteweight=2.4, recycleweight=1.3, comment="The waste weight is over averge")
 
 session.add(measurement1)
 session.commit()
 
 # Create reading for readingweight
-measurement2 = Measurement(id=2, wasteweight=3.6, recycleweight=1,barcode="23123")
+measurement2 = Measurement(id=2, barcode="23123", wasteweight=3.6, recycleweight=1, comment="The waste weight is over averge ")
 
 session.add(measurement2)
 session.commit()

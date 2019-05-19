@@ -23,9 +23,10 @@ class Measurement(Base):
     __tablename__ = 'measurement'
 
     id = Column(Integer, primary_key=True)
+    barcode = Column(String, ForeignKey('user.id'))
     wasteweight = Column(Float, nullable=False)
     recycleweight = Column(Float, nullable=False)
-    barcode = Column(String, ForeignKey('user.id'))
+    comment = Column(String(250), nullable=False)
     user = relationship(User)
 
     @property
@@ -33,9 +34,10 @@ class Measurement(Base):
         """Return object data in easily serializeable format"""
         return {
             'id' : self.id,
+            'barcode' : self.barcode,
             'wasteweight' : self.wasteweight,
             'recycleweight' : self.recycleweight,
-            'barcode' : self.barcode,
+            'comment' : self.comment,
             'user' : self.user,
             }
 
