@@ -17,10 +17,17 @@ Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
-# Show main page catalog
+# Show main page 
 @app.route('/')
+@app.route('/main')
 def showMain():
     return "This page will show main page catalog"
+
+# new reading
+@app.route('/addreading')
+def addReading():
+    return "This page will add reading"
+
 
 
 if __name__ == '__main__':
