@@ -21,12 +21,14 @@ session = DBSession()
 @app.route('/')
 @app.route('/main')
 def showMain():
-    return "This page will show main page catalog"
+	return render_template('showMain.html')
+    #return "This page will show main page catalog"
 
 # new reading
 @app.route('/addreading')
 def addReading():
-    return "This page will add reading"
+	return render_template('addReading.html')
+    #return "This page will add reading"
 
 
 
