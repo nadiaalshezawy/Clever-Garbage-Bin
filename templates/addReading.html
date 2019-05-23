@@ -2,11 +2,22 @@
 {% include "header.html" %}
 {% block content %}
 <h3>Add Reading Page</h3>
+{% include "flashMessage.html" %}
+<form action="{{ url_for('addReading')}}" method = 'post'>
 <h3>Barcode:</h3>
 <input type ='text' size='30' name='barcode'>
 <h3>Weight:</h3>
 <input type ='text' size='30' name='weight'>
 </br>
 </br>
-<input type='submit' value='sumbit'>
+
+<input type='submit' value='Save'>
+
+<a href =  '{{url_for('addReading')}}'>
+<h4>Cancel</h4>
+</a>
+
+<a href =  '{{url_for('showMain')}}'>
+<h4>Main Page</h4>
+</a>
 {% endblock %}
