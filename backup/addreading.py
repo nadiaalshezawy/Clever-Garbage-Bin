@@ -24,12 +24,12 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 # Create dummy user1
-User1 = User(id="23123" ,name="Sulaiman Ibrahim", familynumber=6, city="Al Barsha2 ",address="street 23a, villa 20")
+User1 = User(id="23123" ,name="Sulaiman Ibrahim", familynumber=6, city="Al Barsha2 ",address="street 23a, villa 20",wastelimit=18.0,recyclelimit=100.0)
 session.add(User1)
 session.commit()
 
 # Create dummy user2
-User2 = User(id="45678" ,name="Abdullah Mohammed", familynumber=10, city="Al Warqa3 ",address="street 14a , villa 34")
+User2 = User(id="45678" ,name="Abdullah Mohammed", familynumber=10, city="Al Warqa3 ",address="street 14a , villa 34",wastelimit=18,recyclelimit=100)
 session.add(User2)
 session.commit()
 
