@@ -34,25 +34,25 @@ session.add(User2)
 session.commit()
 
 # Create reading for readingweight of waste
-measurement1 = MeasurementWaste(id=1, date=datetime.now(),barcode="W45678", weight=2.4)
+measurement1 = MeasurementWaste(date=datetime.now(),barcode="W45678", weight=2.4)
 
 session.add(measurement1)
 session.commit()
 
 # Create reading for readingweight of waste
-measurement2 = MeasurementWaste(id=2, date=datetime.now(),barcode="W23123", weight=3.6)
+measurement2 = MeasurementWaste(date=datetime.now(),barcode="W23123", weight=3.6)
 
 session.add(measurement2)
 session.commit()
 
 # Create reading for readingweight of recycle
-measurement1 = MeasurementRecycle(id=1, date=datetime.now(),barcode="R45678", weight=1.4)
+measurement1 = MeasurementRecycle(date=datetime.now(),barcode="R45678", weight=1.4)
 
 session.add(measurement1)
 session.commit()
 
 # Create reading for readingweight of recycle
-measurement2 = MeasurementRecycle(id=2, date=datetime.now(),barcode="R23123", weight=1.6)
+measurement2 = MeasurementRecycle(date=datetime.now(),barcode="R23123", weight=1.6)
 
 session.add(measurement2)
 session.commit()
