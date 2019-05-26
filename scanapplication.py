@@ -23,7 +23,7 @@ session = DBSession()
 @app.route('/main')
 def showMain():
 	return render_template('showMain.html')
-    #return "This page will show main page catalog"
+    #return "This page will show main page "
 
 # new reading
 @app.route('/addreading', methods=['GET', 'POST'])
