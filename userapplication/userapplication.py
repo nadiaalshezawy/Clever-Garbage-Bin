@@ -22,14 +22,23 @@ session = DBSession()
 @app.route('/')
 @app.route('/main')
 def showMain():
-	return "This page will show main page "
+	return render_template('userMain.html')
+	#return "This page will show main page "
 
 # Show user page 
 @app.route('/user')
-def showUser():
-	return "This page will show user "
+def userLogin():
+	return render_template('userLogin.html')
+	#return "This page will show user "
+
+# Show user page 
+@app.route('/user/<int:user_id>/')
+def userStatistics(user_id):
+	return render_template('userStatistics.html')
+	#return "This page will show user "
+
 
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'
     app.debug = True
-    app.run(host='0.0.0.0', port=8000, threaded=False)
+    app.run(host='0.0.0.0', port=5000, threaded=False)

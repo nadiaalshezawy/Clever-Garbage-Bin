@@ -17,8 +17,8 @@ class User(Base):
     familynumber = Column(Integer, nullable=False)
     city = Column(String(250), nullable=False)
     address = Column(String(250), nullable=False)
-    wastelimit = Column(Float, nullable=False)
-    recyclelimit = Column(Float, nullable=False)
+    #wastelimit = Column(Float, nullable=False)
+    #recyclelimit = Column(Float, nullable=False)
     
 
 class MeasurementWaste(Base):

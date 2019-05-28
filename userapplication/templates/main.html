@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <title>Scan Application</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+   </head>
+
+<div class="topnav">
+<a class="active" href="#">Home</a>
+<a href="#">Scan</a>
+<a href="#contact">Contact</a>
+<a href="#about">About</a>
+</div>
+      {% block content %}
+      {% endblock %}
+   </body>
+</html>
