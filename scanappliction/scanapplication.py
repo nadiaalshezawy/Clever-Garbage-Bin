@@ -31,11 +31,13 @@ def addReading():
 	if request.method == 'POST':
 		barcode = request.form['barcode']
 		weight =request.form['weight']
+		weight2=weight[1:7]
+		print(weight2)
 		print(barcode + " "+barcode[0]+" "+weight )
 		#save the reading in recycle table in barcode start with R
 		if barcode[0]=="R":
 			readings= session.query(MeasurementRecycle).all()
-			newreading = MeasurementRecycle(date=datetime.now(),barcode=request.form['barcode'], weight=request.form['weight']);
+			newreading = MeasurementRecycle(date=datetime.now(),barcode=request.form['barcode'], weight=weight2);
 			session.add(newreading)
 			session.commit()
 			flash("new reading added!")
@@ -43,7 +45,7 @@ def addReading():
 		#save the reading in waste table in barcode start with W
 		elif barcode[0]=="W":
 			readings= session.query(MeasurementWaste).all()
-			newreading = MeasurementWaste(date=datetime.now(),barcode=request.form['barcode'], weight=request.form['weight']);
+			newreading = MeasurementWaste(date=datetime.now(),barcode=request.form['barcode'], weight=weight2);
 			session.add(newreading)
 			session.commit()
 			flash("new reading added!")
