@@ -1,6 +1,20 @@
 {% extends "main.html" %}
 {% include "header.html" %}
 {% block content %}
+<div class="indent">
+<form action="{{ url_for('userLogin')}}" method = 'post'>
+
+<h3>User ID:</h3>
+<input type ='text' size='30'  name='id'>
+
+</br>
+</br>
+
+<input type='submit' value='Save'>
+
+<button type="button" onclick="window.location.href ='{{url_for('userLogin')}}';">Cancel</button>
+</form>
+</div>
 
 
 

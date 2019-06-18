@@ -21,22 +21,38 @@ session = DBSession()
 # Show main page 
 @app.route('/')
 @app.route('/main')
-def showMain():
+def userMain():
 	return render_template('userMain.html')
 	#return "This page will show main page "
 
 # Show user page 
-@app.route('/user')
+@app.route('/user',methods=['GET', 'POST'])
 def userLogin():
-	return render_template('userLogin.html')
+	if request.method == 'POST':
+		userId=request.form['id']
+		userdata= session.query(User).filter_by(id=userId).one()
+		#print(userId)
+		return render_template('userStatistics.html',user_id=userId,user=userdata)
+	else:
+	    return render_template('userLogin.html')
 	#return "This page will show user "
 
 # Show user page 
-@app.route('/user/<int:user_id>/')
-def userStatistics(user_id):
-	return render_template('userStatistics.html')
-	#return "This page will show user "
+@app.route('/user/<string:user_id>/statistics')
+def userStatistics(user_id,user):
+	return render_template('userStatistics.html',user_id=user_id,user=user)
 
+#show user info
+@app.route('/user/<string:user_id>/statistics/info')
+def userInfo(user_id):
+	userdata= session.query(User).filter_by(id=user_id).one()
+	return render_template('userInfo.html',user=userdata)
+
+#show user waste statistics
+@app.route('/user/<string:user_id>/statistics/waste')
+def wasteStatistics(user_id):
+	userdata= session.query(User).filter_by(id=user_id).one()
+	return render_template('wasteStatistics.html',user=userdata)
 
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'

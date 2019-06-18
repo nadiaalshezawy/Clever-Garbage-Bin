@@ -1,8 +1,23 @@
+
 {% extends "main.html" %}
 {% include "header.html" %}
 {% block content %}
-
-
-
+<div class="column1">
+<nav>
+		<ul id="mainMenu">
+			<li><a href="{{url_for('userInfo',user_id=user.id,user=user)}}">User Info</a></li>
+			<li><a href="{{url_for('wasteStatistics',user_id=user.id,user=user)}}">Waste Statistics</a></li>
+			<li><a href="#">Recycle Statistics</a></li>
+			<li><a href="#">Chart</a></li>
+			<li><a href="#">Comment</a></li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Contact</a></li>
+		</ul>
+	</nav>
+	</div>
+<div class="column2">
+<p>Welcome</p>
+<p>{{user.name}}</p>
+</div>
 
 {% endblock %}
