@@ -1,8 +1,19 @@
+
 {% extends "main.html" %}
 {% include "header.html" %}
 {% block content %}
-
+</br>
 <div class="indent">
-<p>User waste Information </p>
-</div>
+  <form action="{{url_for('showWaste',user_id=user_id,waste=waste)}}"method = 'post'>
+  <div>
+    <label for="waste">Start record date: </label>
+    <input type="date" id="startDate" name="start" min="05-1-2019" max="06-15-2019">
+
+    <label for="waste">End record date: </label>
+    <input type="date" id="endtDate" name="end" min="05-1-2019" max="06-15-2019">
+    </br>
+    </br>
+    <input type="submit" value="Submit">
+    </form>
+  </div>
 {% endblock %}

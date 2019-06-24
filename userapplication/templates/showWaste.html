@@ -1,0 +1,12 @@
+
+{% extends "main.html" %}
+{% include "header.html" %}
+{% block content %}
+<div class="indent">
+<p>User waste Information </p>
+{% for record in waste %}
+<p>{{record.weight}}</p>
+<p>{{record.date}}</p>
+{% endfor %}
+</div>
+{% endblock %}

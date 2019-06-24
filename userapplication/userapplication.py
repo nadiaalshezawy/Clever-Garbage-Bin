@@ -3,7 +3,7 @@
 # Done by : Nadia Ahmed
 from flask import Flask, render_template, request
 from flask import redirect, jsonify, url_for, flash
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine,DateTime,and_
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import exists
 from database_setup import MeasurementWaste, Base,User,MeasurementRecycle 
@@ -48,11 +48,24 @@ def userInfo(user_id):
 	userdata= session.query(User).filter_by(id=user_id).one()
 	return render_template('userInfo.html',user=userdata)
 
-#show user waste statistics
-@app.route('/user/<string:user_id>/statistics/waste')
+# user waste statistics
+@app.route('/user/<string:user_id>/statistics/waste',methods=['GET', 'POST'])
 def wasteStatistics(user_id):
-	userdata= session.query(User).filter_by(id=user_id).one()
-	return render_template('wasteStatistics.html',user=userdata)
+	if request.method == 'POST':
+		print(request.form['start'])
+		print(request.form['end'])
+		userWaste= session.query(MeasurementWaste).filter_by(barcode=("W"+user_id)).all()
+		return render_template('showWaste.html',user_id=user_id,waste=userWaste)
+	else:
+		#userWaste= session.query(MeasurementWaste).filter_by(barcode=("W"+user_id)).all()
+		return render_template('wasteStatistics.html',user_id=user_id)
+
+# show user waste Statistic
+@app.route('/user/<string:user_id>/statistics/waste')
+def showWaste():
+	userWaste= session.query(MeasurementWaste).filter_by(barcode=("W"+user_id)).all()
+	return render_template('showWaste.html',user_id=user_id,waste=userWaste)
+	
 
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'
