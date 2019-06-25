@@ -6,7 +6,7 @@
 <p>User waste Information </p>
 {% for record in waste %}
 <p>{{record.weight}}</p>
-<p>{{record.date}}</p>
+<p>{{record.date.date()}}</p>
 {% endfor %}
 </div>
 {% endblock %}

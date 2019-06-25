@@ -1,6 +1,6 @@
 #program that set up the data base 
 #!/usr/bin/env python3
-from sqlalchemy import Column, ForeignKey, Integer, String, Text, DateTime, Float
+from sqlalchemy import Column, ForeignKey, Integer, String, Text, DateTime, Float,Date
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
