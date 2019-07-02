@@ -4,15 +4,16 @@
 <div class="column1">
 <nav>
 		<ul id="commentMenu">
-			<li><a href="{{url_for('showWasteComment',user_id=user_id)}}">comment</a></li>
+			<li><a href="{{url_for('showRecycleComment',user_id=user_id)}}">comment</a></li>
 			<li><a href="#">chart</a></li>
 			<li><a href="#">back</a></li>
 		</ul>
 	</nav>
-	</div>
-<div class="coulmn2">
-<h2>User waste Information</h2>
-{% if waste|length == 0 %}
+</div>
+<div class="column2">
+<h2>User Recycle Information </h2>
+
+{% if recycle|length == 0 %}
 <span>You have no record to show</span>
 {%else%}
 <table>
@@ -21,7 +22,7 @@
       <th>Weight(kg)</th>
     </tr>
 {%endif%}
-{% for record in waste %}
+{% for record in recycle %}
 <tr>
 <td>{{record.date.date()}}</td>
 <td>{{record.weight}}</td>

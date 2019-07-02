@@ -18,6 +18,9 @@ Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
+# average globale waste variable
+globWaste= 1.2
+
 # Show main page 
 @app.route('/')
 @app.route('/main')
@@ -67,7 +70,7 @@ def wasteStatistics(user_id):
         """ if rawdata.date.date() < startdate:
             print("start is bigger")
         else:
-        	print("start is smaller")"""
+            print("start is smaller")"""
         #userWaste= session.query(MeasurementWaste).filter_by(barcode=("W"+user_id)).all()
         return render_template('showWaste.html',user_id=user_id,waste=userWaste2)
     else:
@@ -79,7 +82,33 @@ def wasteStatistics(user_id):
 def showWaste():
     userWaste= session.query(MeasurementWaste).filter_by(barcode=("W"+user_id)).all()
     return render_template('showWaste.html',user_id=user_id,waste=userWaste)
-    
+
+# user Recycle statistics
+@app.route('/user/<string:user_id>/statistics/recycle',methods=['GET', 'POST'])
+def recycleStatistics(user_id):
+    if request.method == 'POST':
+        startdate = datetime.strptime(request.form['start'],'%Y-%m-%d')
+        enddate =datetime.strptime(request.form['end'],'%Y-%m-%d')
+        userRecycle= session.query(MeasurementRecycle).filter(MeasurementRecycle.barcode==("R"+user_id),MeasurementRecycle.date>=startdate,MeasurementRecycle.date<=enddate).all()
+        return render_template('showRecycle.html',user_id=user_id,recycle=userRecycle)
+    else:
+        return render_template('recycleStatistics.html',user_id=user_id)
+
+# show user recycle Statistics
+@app.route('/user/<string:user_id>/statistics/recycle')
+def showRecycle(user_id):
+    userRecycle= session.query(MeasurementRecycle).filter_by(barcode=("R"+user_id)).all()
+    return render_template('showRecycle.html',user_id=user_id,recycle=userRecycle)
+
+# show comment on user Waste statistics
+@app.route('/user/<string:user_id>/statistics/wastecomment')
+def showWasteComment(user_id):
+	return render_template('showWasteComment.html',user_id=user_id) 
+
+# show comment on user Recycle statistics
+@app.route('/user/<string:user_id>/statistics/recyclecomment')
+def showRecycleComment(user_id):
+	return render_template('showRecycleComment.html',user_id=user_id)   
 
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'
