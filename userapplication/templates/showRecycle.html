@@ -1,16 +1,8 @@
 {% extends "main.html" %}
 {% include "header.html" %}
 {% block content %}
-<div class="column1">
-<nav>
-		<ul id="commentMenu">
-			<li><a href="{{url_for('showRecycleComment',user_id=user_id)}}">comment</a></li>
-			<li><a href="#">chart</a></li>
-			<li><a href="#">back</a></li>
-		</ul>
-	</nav>
-</div>
-<div class="column2">
+
+<div class="indent">
 <h2>User Recycle Information </h2>
 
 {% if recycle|length == 0 %}
@@ -29,5 +21,21 @@
 </tr>
 {% endfor %}
 </table>
+<br>
+<button onclick="myFunction()">Comment</button>
+<p id="demo"></p>
+<script>
+function myFunction() {
+
+	document.getElementById("demo").innerHTML = "Your Total recycle {{totalrecycle}} kg"+"<br />"+
+	"and its {{percentrecycle}}% from your total waste ";
+	{% if percentrecycle > 75 %}
+	document.getElementById("demo").innerHTML+="<br />"+"keep good work to reach 75% , our ultimate goal number."
+	{%else%}
+	document.getElementById("demo").innerHTML+="<br />"+"Thanks for hitting our ultimate goal number. "
+	{%endif%}
+
+}
+</script>
 </div>
 {% endblock %}

@@ -3,7 +3,7 @@
 {% block content %}
 </br>
 <div class="indent">
-  <form action="{{url_for('showRecycle',user_id=user_id,recycle=recycle)}}"method = 'post'>
+  <form action="{{url_for('showRecycle',user_id=user_id,recycle=recycle,totalrecycle=totalrecycle,percentrecycle=percentrecycle)}}"method = 'post'>
   <div>
     <label for="recycle">Start record date: </label>
     <input type="date" id="startDate" name="start" min="01-1-2019" max="12-01-2020">

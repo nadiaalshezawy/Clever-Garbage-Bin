@@ -1,3 +1,24 @@
+/* zocial elemnt  */
+
+@import url(http://weloveiconfonts.com/api/?family=zocial);
+[class*="zocial-"]:before {
+	font-family: 'zocial', sans-serif;
+}
+
+.social:first-of-type {
+	margin-left: 30%;
+}
+
+.social {
+	color:#333;
+	display: inline-block;
+	margin-right: 8%;
+	position: relative;
+	font-size: 2rem;
+	line-height: 1.5em;
+	margin-bottom: : 20%;
+	font-weight: bold;
+}
 
 .logo{
 	width: 10%;
@@ -16,6 +37,7 @@ header {
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+	background-color:#F8F9F9;
 }
 
 .column1{

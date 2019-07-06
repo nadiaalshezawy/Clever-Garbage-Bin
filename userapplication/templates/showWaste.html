@@ -1,16 +1,8 @@
 {% extends "main.html" %}
 {% include "header.html" %}
 {% block content %}
-<div class="column1">
-<nav>
-		<ul id="commentMenu">
-			<li><a href="{{url_for('showWasteComment',user_id=user_id)}}">comment</a></li>
-			<li><a href="#">chart</a></li>
-			<li><a href="#">back</a></li>
-		</ul>
-	</nav>
-	</div>
-<div class="coulmn2">
+
+<div class="indent">
 <h2>User waste Information</h2>
 {% if waste|length == 0 %}
 <span>You have no record to show</span>
@@ -28,5 +20,19 @@
 </tr>
 {% endfor %}
 </table>
+<br>
+<button onclick="myFunction()">Comment</button>
+<p id="demo"></p>
+<script>
+function myFunction() {
+	{% if totalwaste <  optimumwaste %}
+	document.getElementById("demo").innerHTML = "Total waste {{totalwaste}} kg is less than the average  waste {{optimumwaste}} kg".+"<br />"+
+	"Thanks and keep taking care of our environment";
+  {%else%}
+	document.getElementById("demo").innerHTML = "Total waste {{totalwaste}} kg is more than the average  waste {{optimumwaste}} kg."+"<br />"+
+	"Please do your best to take care of our environment ";
+	{%endif%}
+}
+</script>
 </div>
 {% endblock %}

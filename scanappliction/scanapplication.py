@@ -13,6 +13,8 @@ from datetime import datetime
 app = Flask(__name__)
 APPLICATION_NAME = "scan application"
 engine = create_engine('sqlite:///readingweight.db')
+#engine = create_engine('sqlite:///C:\\Nadia\\professional\\Clever garbage bin\\codevagrant\\vagrant\\Clever Grabage Bin\\userapplication\\readingweight.db')
+
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
@@ -32,24 +34,24 @@ def addReading():
 		barcode = request.form['barcode']
 		weight =request.form['weight']
 		weight2=weight[1:7]
-		print(weight2)
-		print(barcode + " "+barcode[0]+" "+weight )
+		#print(weight2)
+		#print(barcode + " "+barcode[0]+" "+weight )
 		#save the reading in recycle table in barcode start with R
 		if barcode[0]=="R":
 			readings= session.query(MeasurementRecycle).all()
 			newreading = MeasurementRecycle(date=datetime.now(),barcode=request.form['barcode'], weight=weight2);
 			session.add(newreading)
 			session.commit()
-			flash("new reading added!")
-			print("recycle")
+			#flash("new reading added!")
+			#print("recycle")
 		#save the reading in waste table in barcode start with W
 		elif barcode[0]=="W":
 			readings= session.query(MeasurementWaste).all()
 			newreading = MeasurementWaste(date=datetime.now(),barcode=request.form['barcode'], weight=weight2);
 			session.add(newreading)
 			session.commit()
-			flash("new reading added!")
-			print("Waste")
+			#flash("new reading added!")
+			#print("Waste")
 		return redirect(url_for('addReading'))
 	return render_template('addReading.html')
     #return "This page will add reading"

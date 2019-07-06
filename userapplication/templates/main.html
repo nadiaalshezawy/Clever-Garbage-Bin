@@ -11,8 +11,8 @@
   <div class="topnav">
   <a class="active" href="{{url_for('userMain')}}">Home</a>
   <a href="{{url_for('userLogin')}}">Login</a>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
+  <a href="{{url_for('contact')}}">Contact</a>
+  <a href="{{url_for('about')}}">About</a>
   </div>
       {% block content %}
       {% endblock %}
