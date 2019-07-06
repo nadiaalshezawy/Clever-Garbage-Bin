@@ -55,37 +55,34 @@ python userapplication.py
 
 1.Install Vagrant and VirtualBox
 
-2.Clone the [fullstack-nan laodegree-vm](https://github.com/udacity/fullstack-nanodegree-vm).
+2.Launch the Vagrant VM (vagrant up)
 
-3.Launch the Vagrant VM (vagrant up)
+3.Log into Vagrant VM (vagrant ssh)
 
-4.Log into Vagrant VM (vagrant ssh)
+4.Navigate to cd/vagrant
 
-5.Navigate to cd/vagrant
-
-6.Create the data by running:
+5.Create the data by running:
   ```python database_setup.py```
 
-    ```python lotsofmenus.py```
+    ```python addreading.py```
 
-7.Run your application within the VM (python /vagrant/catalog2/project.py)
-   by typing ```python project.py```
+6.Run your scan application within the VM (python /vagrant/scanapplication/scanapplication.py)
+   by typing ```python scanapplication.py```
 
-8.Access and test your application by visiting http://localhost:8000 locally
+7.Access and test your application by visiting http://localhost:8000 locally
 
-9.When creating new or editting Category/item the name should be unique.
+8.Run your user application within the VM (python /vagrant/userapplication/userapplication.py)
+   by typing ```python userapplication.py```
 
-## JSON API ENDPOINT
- The user can have the json api by these url
+9.Access and test your application by visiting http://localhost:5000 locally
 
- Category JSON: `/catalog/<string:category_name>/items/JSON`
-
- Item JSON: `/catalog/<string:category_name>/<string:category_item>/JSON`
+##Thanks
+Many thanks to Tom Igoe for sharing his code of how to read from Serial port, the file used is wsServer.js
 
 ## Contributing
 
 -The application can be modified to have more functionality such as
- image CRUD, recent item added and also the css style can be enhanced.
+ including chart of data.
 
 ## Author
  Nadia Ahmed

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <title>User Application</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+   </head>
+
+<body>
+  <div class="topnav">
+  <a class="active" href="{{url_for('userMain')}}">Home</a>
+  <a href="{{url_for('userLogin')}}">Login</a>
+  <a href="{{url_for('contact')}}">Contact</a>
+  <a href="{{url_for('about')}}">About</a>
+  </div>
+      {% block content %}
+      {% endblock %}
+   </body>
+</html>

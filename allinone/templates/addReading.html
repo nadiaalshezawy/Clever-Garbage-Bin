@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+     <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.8/p5.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.8/addons/p5.dom.js"></script>
+      <meta charset="utf-8">
+      <title>Scan Application</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+      <script type="text/javascript">
+  var text;		// variable for the text div you'll create
+  var socket = new WebSocket("ws://localhost:8081");
+  function setup() {
+    // The socket connection needs two event listeners:
+    socket.onopen = openSocket;
+    socket.onmessage = showData;
+    // make a new div and position it at 10, 10:
+  //  text = createDiv("Sensor reading:");
+    //text.position(10,10);
+  }
+  function openSocket() {
+    //text.html("Socket open");
+    socket.send("Hello server");
+  }
+  /*
+  showData(), below, will get called whenever there is new Data
+  from the server. So there's no need for a draw() function:
+  */
+  function showData(result) {
+    // when the server returns, show the result in the div:
+    //text.html("Sensor reading:" + result.data);
+    var reading =result.data;
+    var textweight=String(reading);
+
+    //xPos = int(result.data);        // convert result to an integer
+    //text.position(xPos, 10);        // position the text
+    //document.getElementById("weight").innerHTML = reading;
+    document.getElementById("weight").value = textweight.substr(3, 9);
+    //console.log(textweight.substr(3, 9));
+  }
+</script>
+   </head>
+
+<header>
+  <div class="logo">
+      <img   class="logopic" alt="logo image">
+</header>
+<body>
+{% include "flashMessage.html" %}
+<div class="topnav">
+<a class="active" href="{{url_for('showMain')}}">Home</a>
+<a href="{{url_for('addReading')}}">Scan</a>
+<a href="#contact">Contact</a>
+<a href="#about">About</a>
+</div>
+<div class="indent">
+<form action="{{ url_for('addReading')}}" method = 'post'>
+
+<h3>Weight:</h3>
+<input type ='text' size='30' id='weight' name='weight' value ="">
+<h3>Barcode:</h3>
+<input type ='text' size='30' name='barcode'>
+
+</br>
+</br>
+
+<input type='submit' value='Save'>
+</br>
+<button type="button" onclick="window.location.href ='{{url_for('addReading')}}';">Cancel</button>
+</div>
+</body>
+</html>
