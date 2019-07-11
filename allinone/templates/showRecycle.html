@@ -3,6 +3,7 @@
 {% block content %}
 
 <div class="indent">
+<div class="column1">
 <h2>User Recycle Information </h2>
 
 {% if recycle|length == 0 %}
@@ -23,7 +24,20 @@
 </table>
 <br>
 <button onclick="myFunction()">Comment</button>
-<p id="demo"></p>
+<button onclick="showChart()">Chart</button>
+</div>
+</div>
+<div class=column2>
+<br>
+<br>
+<p id="demo" ></p>
+<br>
+<br>
+<h3 id="title"></h3>
+<canvas id="chart" width="600" height="400"></canvas>
+<br>
+<br>
+</div>
 <script>
 function myFunction() {
 
@@ -34,8 +48,60 @@ function myFunction() {
 	{%else%}
 	document.getElementById("demo").innerHTML+="<br />"+"Thanks for hitting our ultimate goal number. "
 	{%endif%}
-
 }
 </script>
-</div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+<script>
+     // bar chart data
+function showChart(){
+
+  document.getElementById("title").innerHTML ="Recycle weight vs Date";
+     var barData = {
+
+
+       labels : [
+         {% for item in recycle %}
+          "{{ item.date.date() }}",
+
+         {% endfor %}
+ ],
+       datasets : [{
+
+         fillColor: "rgba(63, 191, 63,.5)",
+         strokeColor: "rgba(63, 191, 63,1)",
+         pointColor: "rgba(63, 191, 63,1)",
+
+         data : [
+           {% for item in recycle %}
+              "{{ item.weight }}",
+
+             {% endfor %}
+     ]
+         }
+       ]
+
+
+     }
+    // get bar chart canvas
+    var mychart = document.getElementById("chart").getContext("2d");
+      steps = 10
+      max =10
+
+    // draw bar chart
+    new Chart(mychart).Bar(barData, {
+
+
+      scaleOverride: true,
+      scaleSteps: steps,
+      scaleStepWidth: Math.ceil(max / steps),
+      scaleStartValue: 0,
+      scaleShowVerticalLines: true,
+      scaleShowGridLines : true,
+      barShowStroke : true,
+      scaleShowLabels: true
+      }
+    );
+  }
+</script>
+
 {% endblock %}

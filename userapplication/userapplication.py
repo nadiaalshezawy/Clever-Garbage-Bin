@@ -80,7 +80,7 @@ def wasteStatistics(user_id):
             elif record.date.date() != date1:
                        optimumwaste+=(globWaste*userdata.familynumber)
                        date1=record.date.date()
-                       
+        print("totalwaste ",totalwaste,"optimumwaste ",optimumwaste)              
         return render_template('showWaste.html',user_id=user_id,waste=userWaste,totalwaste=totalwaste,optimumwaste=optimumwaste)
     else:
         return render_template('wasteStatistics.html',user_id=user_id)

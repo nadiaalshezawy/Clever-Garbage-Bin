@@ -40,9 +40,10 @@ body {
 	background-color:#F8F9F9;
 }
 
+
 .column1{
 	float:left;
-	width:30%;
+	width:40%;
 }
 
 .column2{
@@ -54,7 +55,7 @@ body {
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 30%;
+  width: 70%;
 }
 
 td, th {

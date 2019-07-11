@@ -76,7 +76,7 @@ python userapplication.py
 
 9.Access and test your application by visiting http://localhost:5000 locally
 
-##Thanks
+## Thanks
 
 -Many thanks to Tom Igoe for sharing his code of how to read from Serial port, the file used is wsServer.js
 
