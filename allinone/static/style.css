@@ -28,7 +28,7 @@
 }
 
 .logopic{
-	content:url("../static/images/logo.png");
+	content:url("../static/images/swms.png");
 }
 /*style headr */
 header {
@@ -44,7 +44,7 @@ body {
 
 .column1{
 	float:left;
-	width:30%;
+	width:40%;
 }
 
 .column2{
@@ -56,7 +56,7 @@ body {
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 30%;
+  width:50%;
 }
 
 td, th {
