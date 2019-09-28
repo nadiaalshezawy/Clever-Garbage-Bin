@@ -27,7 +27,7 @@ The database includes three tables:
 -measurementwaste table : save the data of waste bin
 
 ## Project content
-The project have these content
+The project have these content and they are all included in allinone folder
 
 +database_setup.py : The inital model of  the database.
 
