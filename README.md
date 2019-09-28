@@ -1,5 +1,5 @@
-# Smart Garbage System
-The **Smart Garbage System** develop an system of tracking the waste /recycle garbage data of houses by adding a barcode to these bin that will be scanned by truck garbage collector and saved with the corresponding weight of waste/recycle . These data will be saved in a database that can be accessed later by individual.
+# Smart Waste Management System
+The ** Smart Waste Management System** develop an system of tracking the waste /recycle garbage data of houses by adding a barcode to these bin that will be scanned by truck garbage collector and saved with the corresponding weight of waste/recycle . These data will be saved in a database that can be accessed later by individual.
 
 ## Skills applied
  -Python
